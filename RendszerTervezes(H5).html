@@ -143,8 +143,6 @@
 
 <p style="margin-bottom: 0cm;" align="right" lang="hu-HU"><font size="4">2025.11.24.</font></p>
 
-<p>Dokumentum címe: RENDSZERTERVEZÉS</p>
-
 <p>&nbsp;</p>
 
 <p align="center"><b>Történet</b></p>
@@ -236,14 +234,6 @@
 
 <p>&nbsp;</p>
 
-<p>A dokumentumok formátumára vonatkozó általános előírások betartása
-    kötelező.</p>
-
-<p>&nbsp;</p>
-
-<p>Ez a dokumentum minta kevésbé formális, mint az előzőek, mert
-    ebben a munkafázisban a feladat jellege és a csoportok munkamódszere
-    már jelentősen befolyásolja a célszerű dokumentum formát.</p>
 
 <p>&nbsp;</p>
 
@@ -260,7 +250,8 @@
 <p><a href="#_Toc130874265">1. Bevezetés</a></p>
 
 <p><a href="#_Toc130874266">2. Felhasználói felület</a></p>
-
+<p style="margin-left: 0.5cm;"><a href="#Hallgatoi">2.1. Hallgatói Felület Terv</a></p>
+<p style="margin-left: 0.5cm;"><a href="#Oktatoi">2.2. Oktatói/Adminisztrátori Felület Terv</a></p>
 <p><a href="#_Toc130874267">3. Adatmodellek</a></p>
 
 <p style="margin-left: 0.5cm;"><a href="#_Toc130874268">3.1. Adatbázis kezelő kiválasztása</a></p>
@@ -268,6 +259,7 @@
 <p style="margin-left: 0.5cm;"><a href="#_Toc130874269">3.2. Szemantikai adatmodell</a></p>
 
 <p style="margin-left: 0.5cm;"><a href="#_Toc130874270">3.3 Relációs adatmodell</a></p>
+<p style="margin-left: 1cm;"><a href="Tablakterve">3.3.1. Főbb MySQL táblák terve</a></p>
 
 <p style="margin-left: 0.5cm;"><a href="#_Toc130874271">3.4. Az adatbázis kezelővel kapcsolatot
     tartó osztályok</a></p>
@@ -275,6 +267,9 @@
 <p><a href="#_Toc130874272">4. A funkcionális modell kiegészítése</a></p>
 
 <p><a href="#_Toc130874273">5. Tesztelési Terv</a></p>
+<p style="margin-left: 0.5cm;"><a href="#Unit">5.1. Unit Tesztek (Backend)</a></p>
+<p style="margin-left: 0.5cm;"><a href="#Integ">5.2. Integrációs Tesztek</a></p>
+<p style="margin-left: 0.5cm;"><a href="#Felulet">5.3. Felhasználói Felület Tesztelése (Frontend)</a></p>
 
 <p>&nbsp;</p>
 
@@ -298,12 +293,12 @@
 
 <p>&nbsp;</p>
 
-<h2>2.1 Hallgatói Felület Terv</h2>
+<h2><a name="Hallgatoi"></a>2.1. Hallgatói Felület Terv</h2>
 <p>
     A Hallgatói felület egy központi irányítópulttal indul, amely összefoglalja a legfontosabb információkat: aktuális félév, kreditállás, kiírt vizsgák száma és pénzügyi egyenleg. A navigáció menüpontjai: Tanulmányok (Kurzusfelvétel, Jegyek), Vizsgák, Pénzügyek, Üzenetek. A felület minimalista, HeroUI komponensekre épül.
 </p>
 
-<h2>2.2 Oktatói/Adminisztrátori Felület Terv</h2>
+<h2><a name="Oktatoi"></a>2.2. Oktatói/Adminisztrátori Felület Terv</h2>
 <p>
     Az Oktatói felület a kurzusadminisztrációra és a jegybeírásra fókuszál. Egy táblázatos nézetet használ, amely lehetővé teszi a jegyek gyors beírását és a Hallgatói listák kezelését. Az Adminisztrátori felület egy elkülönített, magas biztonsági szinttel védett felület, amely jogosultságkezelésre, adatbázis-karbantartásra és statisztikai riportok futtatására szolgál.
 </p>
@@ -339,7 +334,7 @@
 
 <p>A relációs adatmodellre konvertálás az E-R diagramból történik, amelynek eredménye a táblák, oszlopok, elsődleges kulcsok (Primary Keys) és idegen kulcsok (Foreign Keys) rendszere, amely a MySQL adatbázis sémáját képezi. A konverzió során az N:M kapcsolatok (pl. Hallgató és Kurzus) külön összekötő táblákká alakulnak.</p>
 
-<h3>3.3.1 Főbb MySQL táblák terve</h3>
+<h3><a name="Tablakterve"></a>3.3.1 Főbb MySQL táblák terve</h3>
 
 <p>
     A főbb táblák tervezete, melyek a Tanulmányi Alrendszer alapját képezik:
@@ -418,7 +413,7 @@
 <p>&nbsp;</p>
 
 <h1><a name="_Toc101183578"></a><a name="_Toc130874273"></a>5. Tesztelési Terv</h1>
-<h2>5.1. Unit Tesztek (Backend)</h2>
+<h2><a name="Unit"></a>5.1. Unit Tesztek (Backend)</h2>
 <p>
     A Java/Spring Boot backend üzleti logikáját a JUnit 5 keretrendszerrel és a Mockito könyvtárral tervezzük tesztelni. Főbb teszt esetek, amelyek a tranzakciókezelést és a jogosultságokat ellenőrzik:
 </p>
@@ -426,7 +421,7 @@
     <li>VizsgaJelentkezés: Ellenőrizni, hogy a hallgató csak akkor tud jelentkezni, ha a vizsgán van szabad hely és a határidő érvényes (Határérték analízis).</li>
     <li>KreditEllenőrzés: Validálni, hogy a KurzusFelvétel Controller helyesen ellenőrzi az előfeltételeket és a hallgató féléves kreditlimitjét (Ekvivalencia partícionálás).</li>
 </ul>
-<h2>5.2. Integrációs Tesztek</h2>
+<h2><a name="Integ"></a>5.2. Integrációs Tesztek</h2>
 <p>
     A Spring Data JPA réteg és a MySQL közötti kommunikáció tesztelése. Főbb teszt esetek:
 </p>
@@ -434,7 +429,7 @@
     <li>Tranzakciós Folyamat: Tesztelni a PénzügyiTétel és a KurzusFelvétel együttes mentését, biztosítva az automatikus `rollback`-et hiba esetén (Tranzakciós integritás ellenőrzése).</li>
     <li>API Endpoint Tesztelés: A RESTful API végpontok (pl. `/api/v1/jegybeiras`) tesztelése külső eszközzel (pl. Postman) a válaszidő és a válasz törzsének helyessége szempontjából.</li>
 </ul>
-<h2>5.3. Felhasználói Felület Tesztelése (Frontend)</h2>
+<h2><a name="Felulet"></a>5.3. Felhasználói Felület Tesztelése (Frontend)</h2>
 <p>
     A Next.js frontend funkcionális tesztelését a Jest és a Testing Library segítségével tervezzük végezni. Főbb teszt esetek:
 </p>
